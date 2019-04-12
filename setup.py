@@ -14,6 +14,7 @@ setup(
     long_description=readme,
     install_requires=[
         'requests',
+        'python-dotenv'
         # 'xmltodict',
         # 'pendulum',
     ],

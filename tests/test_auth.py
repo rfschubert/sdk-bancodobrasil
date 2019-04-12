@@ -10,6 +10,10 @@ class AuthTestCase(TestCase):
     def setUp(self):
         self.auth = Auth
 
+    def test_get_access_token(self):
+        access_token = self.auth(prod=False).get_access_token()
+        self.assertEqual(1134, len(access_token))
+
     def test_check_if_dot_env_variables_are_eligible_for_use(self):
         auth = self.auth(prod=False)
         self.assertEqual(auth.CREDENTIALS['client_id'], os.getenv('HOMOL_CLIENT_ID'))

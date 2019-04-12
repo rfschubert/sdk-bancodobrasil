@@ -3,6 +3,7 @@ import os
 from unittest import TestCase
 
 from sdk_bancodobrasil import Auth
+from tests.test_mocks import MockOAuthTokenRequestResponse
 
 
 class AuthTestCase(TestCase):
@@ -11,7 +12,9 @@ class AuthTestCase(TestCase):
         self.auth = Auth
 
     def test_get_access_token(self):
-        access_token = self.auth(prod=False).get_access_token()
+        access_token = self.auth(prod=False).get_access_token(
+            mock=MockOAuthTokenRequestResponse()
+        )
         self.assertEqual(1134, len(access_token))
 
     def test_check_if_dot_env_variables_are_eligible_for_use(self):

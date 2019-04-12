@@ -31,7 +31,7 @@ class Auth:
             self.CREDENTIALS['client_secret'] = os.getenv('HOMOL_CLIENT_SECRET')
             self.OAUTH_URL = os.getenv('HOMOL_OAUTH_URL')
 
-    def get_access_token(self):
+    def get_access_token(self, mock=None):
         params = {
             "grant_type": "client_credentials",
             "scope": self.SCOPE
@@ -46,5 +46,8 @@ class Auth:
                 ).encode()).decode()
             )
         }
-        response = requests.request("POST", self.OAUTH_URL, data={}, headers=headers, params=params)
+        if mock is None:
+            response = requests.request("POST", self.OAUTH_URL, data={}, headers=headers, params=params)
+        else:
+            response = mock
         return json.loads(response.text).get('access_token')

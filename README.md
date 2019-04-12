@@ -5,9 +5,13 @@ Esta biblioteca não é oficial e/ou mantida por ninguém vinculado ao `Banco do
 
 É um projeto desenvolvido por terceiros com intuito de facilitar a conversação e emissão de boletos na API via webservice.
 
+## Testes
+Os testes foram executados com a biblioteca `unittest` e cobrem o básico de funcionalidade da `SDK``.
+
+
 ## Tarefas
 
-* [ ] Autenticação usando `OAuth 2.0`
+* [X] Autenticação usando `OAuth 2.0`
 * [ ] Emissão de boleto registrado
 * [ ] Implementação de erro genérico 
 * [ ] Implementação de erros específicos para cada erro possível na documentação

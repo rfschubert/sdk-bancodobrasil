@@ -1,0 +1,2 @@
+class Boleto:
+    pass

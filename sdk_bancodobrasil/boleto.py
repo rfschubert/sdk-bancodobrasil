@@ -1,3 +1,6 @@
+import inspect
+import os
+
 from sdk_bancodobrasil import Auth
 from validator import *
 
@@ -104,4 +107,5 @@ class BBBoletoBuilder:
 class Boleto(Auth):
 
     def emitir(self, boleto: BBBoletoBuilder):
+        base_path = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
         return

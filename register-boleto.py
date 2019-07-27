@@ -29,12 +29,15 @@ from zeep import Client, Transport
 from requests import Session
 
 session = Session()
-session.verify = './sdk_bancodobrasil/certificados/AC_Banco_do_Brasil_v3_HOM.pem'
-session.headers = {"Authorization": "Bearer {}".format(Auth().get_access_token())}
+session.verify = './sdk_bancodobrasil/certificados/Autoridade_Certificadora_Raiz_Brasileira_v5.pem'
+auth = Auth()
+access_token = auth.get_access_token()
+session.headers = {"Authorization": "Bearer {}".format(access_token)}
+
 transport = Transport(session=session)
 
 cli = Client(
-    'https://cobranca.homologa.bb.com.br:7101/Processos/Ws/RegistroCobrancaService.serviceagent?wsdl',
+    'https://cobranca.bb.com.br:7101/Processos/Ws/RegistroCobrancaService.serviceagent?wsdl',
     transport=transport
 )
 payload = {
@@ -42,8 +45,8 @@ payload = {
     'numeroCarteira': 17,
     'numeroVariacaoCarteira': 19,
     'codigoModalidadeTitulo': 1,
-    'dataEmissaoTitulo': '17.04.2019',
-    'dataVencimentoTitulo': '17.04.2019',
+    'dataEmissaoTitulo': '21.05.2019',
+    'dataVencimentoTitulo': '23.05.2019',
     'indicadorPermissaoRecebimentoParcial': 'N',
     'nomePagador': 'RAPHAEL FILIPE SCHUBERT',
     'textoEnderecoPagador': 'R ISRAEL DE ALMEIDA',
@@ -52,15 +55,15 @@ payload = {
     'siglaUfPagador': 'SC',
     'numeroCepPagador': 88312000,
     'valorOriginalTitulo': 1.99,
-    'numeroInscricaoPagador': '73400584000166',
-    'codigoTipoInscricaoPagador': 2,
-    'textoNumeroTituloCliente': '00031708670000000001',
+    'numeroInscricaoPagador': '07770374910',
+    'codigoTipoInscricaoPagador': 1,
+    'textoNumeroTituloCliente': '00031708670000000002',
     'codigoTipoTitulo': '4',
     'codigoTipoDesconto': '0',
     'codigoTipoJuroMora': 0,
     'codigoTipoMulta': 0,
     'codigoAceiteTitulo': 'A',
-    'codigoChaveUsuario': 'J1234567',
+    'codigoChaveUsuario': 'JD028220',
     'codigoTipoCanalSolicitacao': 5,
 }
 

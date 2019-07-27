@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 python-dotenv = "*"
+pipfile = "*"
 
 [requires]
 python_version = "3.7"
